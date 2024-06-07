@@ -1,29 +1,48 @@
+/* eslint-disable max-lines-per-function */
 /* eslint-disable react/react-in-jsx-scope */
 import { Env } from '@env';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { useRouter } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 
 import { Item } from '@/components/settings/item';
 import { ItemsContainer } from '@/components/settings/items-container';
 import { LanguageItem } from '@/components/settings/language-item';
 import { ThemeItem } from '@/components/settings/theme-item';
-import { translate, useAuth } from '@/core';
-import { colors, FocusAwareStatusBar, ScrollView, Text, View } from '@/ui';
+import { useAuth } from '@/core';
+import {
+  colors,
+  FocusAwareStatusBar,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from '@/ui';
 import { Github, Rate, Share, Support, Website } from '@/ui/icons';
 
 export default function Settings() {
+  const router = useRouter();
   const signOut = useAuth.use.signOut();
   const { colorScheme } = useColorScheme();
+  console.log('🚀 ~ Settings ~ colorScheme:', colorScheme);
   const iconColor =
-    colorScheme === 'dark' ? colors.neutral[400] : colors.neutral[500];
+    colorScheme === 'dark' ? colors.neutral[200] : colors.neutral[800];
   return (
     <>
       <FocusAwareStatusBar />
 
       <ScrollView>
         <View className="flex-1 px-4 pt-16 ">
-          <Text className="text-xl font-bold">
-            {translate('settings.title')}
-          </Text>
+          <View className="flex-row items-center justify-between">
+            <TouchableOpacity
+              className="m-1 rounded-full p-3"
+              onPress={() => router.push('/')}
+            >
+              <FontAwesome name="arrow-left" size={25} color={iconColor} />
+            </TouchableOpacity>
+            <Text className="text-3xl font-bold">Info</Text>
+          </View>
+
           <ItemsContainer title="settings.generale">
             <LanguageItem />
             <ThemeItem />

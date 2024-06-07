@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import type { ConfigContext, ExpoConfig } from '@expo/config';
 
 import { ClientEnv, Env } from './env';
@@ -48,34 +47,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         fonts: ['./assets/fonts/Inter.ttf'],
       },
     ],
-    'expo-localization',
+
     'expo-router',
-    [
-      'expo-build-properties',
-      {
-        android: {
-          kotlinVersion: '1.7.22', // this is for softinput package
-        },
-      },
-    ],
-    [
-      'app-icon-badge',
-      {
-        enabled: Env.APP_ENV !== 'production',
-        badges: [
-          {
-            text: Env.APP_ENV,
-            type: 'banner',
-            color: 'white',
-          },
-          {
-            text: Env.VERSION.toString(),
-            type: 'ribbon',
-            color: 'white',
-          },
-        ],
-      },
-    ],
   ],
   extra: {
     ...ClientEnv,

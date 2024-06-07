@@ -7,7 +7,7 @@ import type {
 } from 'react-hook-form';
 import { useController } from 'react-hook-form';
 import type { TextInput, TextInputProps } from 'react-native';
-import { I18nManager, StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { TextInput as NTextInput } from 'react-native';
 import { tv } from 'tailwind-variants';
 
@@ -103,10 +103,7 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
         onBlur={onBlur}
         onFocus={onFocus}
         {...inputProps}
-        style={StyleSheet.flatten([
-          { writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr' },
-          inputProps.style,
-        ])}
+        style={[inputProps.style]}
       />
       {error && (
         <Text

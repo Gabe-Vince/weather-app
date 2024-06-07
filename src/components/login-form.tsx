@@ -1,10 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { router } from 'expo-router';
 import React from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
-import { Button, ControlledInput, Text, View } from '@/ui';
+import { Button, ControlledInput, Text, TouchableOpacity, View } from '@/ui';
 
 const schema = z.object({
   name: z.string().optional(),
@@ -62,6 +63,9 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
         label="Login"
         onPress={handleSubmit(onSubmit)}
       />
+      <TouchableOpacity onPress={() => router.push('/')}>
+        <Text className="color-slate-600">Press</Text>
+      </TouchableOpacity>
     </View>
   );
 };

@@ -13,6 +13,7 @@ const DarkTheme: Theme = {
     ..._DarkTheme.colors,
     primary: colors.primary[200],
     background: colors.charcoal[950],
+
     text: colors.charcoal[100],
     border: colors.charcoal[500],
     card: colors.charcoal[850],
@@ -23,7 +24,7 @@ const LightTheme: Theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: colors.primary[400],
+    primary: colors.primary[900],
     background: colors.white,
   },
 };

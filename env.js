@@ -36,7 +36,7 @@ require('dotenv').config({
 const BUNDLE_ID = 'com.gabeweather'; // ios bundle id
 const PACKAGE = 'com.gabeweather'; // android package name
 const NAME = 'gabeWeather'; // app name
-const EXPO_ACCOUNT_OWNER = 'expo-owner'; // expo account owner
+const EXPO_ACCOUNT_OWNER = 'vimbatech'; // expo account owner
 const EAS_PROJECT_ID = 'd3cfb42a-b345-4543-97fa-dd8cea7eb46d'; // eas project id
 const SCHEME = 'gabeWeather'; // app scheme
 

@@ -52,7 +52,9 @@ module.exports = {
         'react/require-default-props': 'off', // Allow non-defined react props as undefined
         '@typescript-eslint/comma-dangle': 'off', // Avoid conflict rule between Eslint and Prettier
         '@typescript-eslint/consistent-type-imports': 'error', // Ensure `import type` is used when it's necessary
-        'import/prefer-default-export': 'off', // Named export is easier to refactor automatically
+        'import/prefer-default-export': 'off',
+        'react-native/no-inline-styles': 'off',
+
         'tailwindcss/classnames-order': [
           'warn',
           {
