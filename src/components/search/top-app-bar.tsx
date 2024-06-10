@@ -1,52 +1,63 @@
 /* eslint-disable max-lines-per-function */
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useRouter } from 'expo-router';
+import { debounce } from 'lodash';
 import React, { useState } from 'react';
 import { TextInput } from 'react-native';
 import Animated, {
+  interpolate,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
 
-import { colors, TouchableOpacity, View, WIDTH } from '@/ui';
+import { type City, getCities } from '@/api';
+import { colors, TouchableOpacity, View } from '@/ui';
+import { WIDTH } from '@/ui/utils';
+
+import { SearchList } from './search-list';
 
 export const TopAppBar = () => {
   const router = useRouter();
   const [showSearch, setShowSearch] = useState<boolean>(false);
-  const width = useSharedValue(0);
-  const infoButtonY = useSharedValue(0);
-  const infoButtonOpacity = useSharedValue(1);
+  const [locations, setLocations] = useState<City[]>([]);
+  // Setting one shared value instead of multiple for each style value you are trying to animate increases performance and maintainability
+  // then we use interpolation to get the desired effect we want for each style value
+  const animatedValue = useSharedValue(0);
 
   const searchBarStyle = useAnimatedStyle(() => {
     return {
-      width: withTiming(width.value, {
-        duration: 500,
-      }),
+      width: interpolate(animatedValue.value, [0, 1], [0, WIDTH - 37]),
     };
   });
 
   const infoButtonStyle = useAnimatedStyle(() => {
     return {
       transform: [
-        { translateY: withTiming(infoButtonY.value, { duration: 300 }) },
+        { translateY: interpolate(animatedValue.value, [0, 1], [0, 20]) },
       ],
-      opacity: withTiming(infoButtonOpacity.value, { duration: 300 }),
+      opacity: interpolate(animatedValue.value, [0, 1], [1, 0]),
     };
   });
 
   const handlePress = () => {
     setShowSearch(!showSearch);
     if (showSearch) {
-      width.value = 0;
-      infoButtonY.value = 0;
-      infoButtonOpacity.value = 1;
+      animatedValue.value = withTiming(0, { duration: 500 });
     } else {
-      width.value = WIDTH - 37;
-      infoButtonY.value = 20;
-      infoButtonOpacity.value = 0;
+      animatedValue.value = withTiming(1, { duration: 500 });
+      setLocations([]);
     }
   };
+
+  const handleTextDebounce = debounce(async (query: string) => {
+    if (query.length > 2) {
+      const cities = await getCities(query);
+      setLocations(cities);
+    } else {
+      setLocations([]);
+    }
+  }, 1200);
 
   return (
     <View className="relative z-50 mx-5 mt-6 ">
@@ -76,6 +87,7 @@ export const TopAppBar = () => {
                 placeholderTextColor={colors.neutral[200]}
                 className="h-10 pl-6 text-base text-white"
                 style={{ width: 250 }}
+                onChangeText={handleTextDebounce}
               />
             </View>
           )}
@@ -93,6 +105,9 @@ export const TopAppBar = () => {
           )}
         </TouchableOpacity>
       </View>
+      {locations!.length > 0 && showSearch ? (
+        <SearchList cities={locations} />
+      ) : null}
     </View>
   );
 };

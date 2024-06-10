@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 /* eslint-disable react/react-in-jsx-scope */
 import { Env } from '@env';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -9,7 +8,6 @@ import { Item } from '@/components/settings/item';
 import { ItemsContainer } from '@/components/settings/items-container';
 import { LanguageItem } from '@/components/settings/language-item';
 import { ThemeItem } from '@/components/settings/theme-item';
-import { useAuth } from '@/core';
 import {
   colors,
   FocusAwareStatusBar,
@@ -22,7 +20,7 @@ import { Github, Rate, Share, Support, Website } from '@/ui/icons';
 
 export default function Settings() {
   const router = useRouter();
-  const signOut = useAuth.use.signOut();
+
   const { colorScheme } = useColorScheme();
   console.log('🚀 ~ Settings ~ colorScheme:', colorScheme);
   const iconColor =
@@ -85,12 +83,6 @@ export default function Settings() {
               onPress={() => {}}
             />
           </ItemsContainer>
-
-          <View className="my-8">
-            <ItemsContainer>
-              <Item text="settings.logout" onPress={signOut} />
-            </ItemsContainer>
-          </View>
         </View>
       </ScrollView>
     </>

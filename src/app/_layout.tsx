@@ -3,7 +3,6 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { ThemeProvider } from '@react-navigation/native';
 import { SplashScreen, Stack } from 'expo-router';
 import { StyleSheet } from 'react-native';
-import FlashMessage from 'react-native-flash-message';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { APIProvider } from '@/api';
@@ -50,10 +49,7 @@ function Providers({ children }: { children: React.ReactNode }) {
     >
       <ThemeProvider value={theme}>
         <APIProvider>
-          <BottomSheetModalProvider>
-            {children}
-            <FlashMessage position="top" />
-          </BottomSheetModalProvider>
+          <BottomSheetModalProvider>{children}</BottomSheetModalProvider>
         </APIProvider>
       </ThemeProvider>
     </GestureHandlerRootView>

@@ -77,16 +77,13 @@ const client = z.object({
   PACKAGE: z.string(),
   VERSION: z.string(),
 
-  // ADD YOUR CLIENT ENV VARS HERE
-  API_URL: z.string(),
-  VAR_NUMBER: z.number(),
-  VAR_BOOL: z.boolean(),
+  OPEN_WEATHER_API_URL: z.string(),
+  OPEN_WEATHER_API_KEY: z.string(),
 });
 
 const buildTime = z.object({
   EXPO_ACCOUNT_OWNER: z.string(),
   EAS_PROJECT_ID: z.string(),
-  // ADD YOUR BUILD TIME ENV VARS HERE
   SECRET_KEY: z.string(),
 });
 
@@ -101,10 +98,8 @@ const _clientEnv = {
   PACKAGE: withEnvSuffix(PACKAGE),
   VERSION: packageJSON.version,
 
-  // ADD YOUR ENV VARS HERE TOO
-  API_URL: process.env.API_URL,
-  VAR_NUMBER: Number(process.env.VAR_NUMBER),
-  VAR_BOOL: process.env.VAR_BOOL === 'true',
+  OPEN_WEATHER_API_URL: process.env.OPEN_WEATHER_API_URL,
+  OPEN_WEATHER_API_KEY: process.env.OPEN_WEATHER_API_KEY,
 };
 
 /**
@@ -113,16 +108,9 @@ const _clientEnv = {
 const _buildTimeEnv = {
   EXPO_ACCOUNT_OWNER,
   EAS_PROJECT_ID,
-  // ADD YOUR ENV VARS HERE TOO
   SECRET_KEY: process.env.SECRET_KEY,
 };
 
-/**
- * 3rd part: Merge and Validate your env variables
- * We use zod to validate our env variables based on the schema we defined above
- * If the validation fails we throw an error and log the error to the console with a detailed message about missed variables
- * If the validation passes we export the merged and parsed env variables to be used in the app.config.ts file as well as a ClientEnv object to be used in the client-side code
- **/
 const _env = {
   ..._clientEnv,
   ..._buildTimeEnv,
