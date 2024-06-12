@@ -54,7 +54,7 @@ In the `ios/` folder of your React Native project, open the `.xcodeproj` file in
 1. Create a New Group under the root of this project and name it whatever asset folder name you'd like to give it (i.e., Assets).
 2. Drop your `.riv` file into this group, and when prompted by XCode, add it to the Target of your app. This ensures that the Rive file gets included in the bundle resources.
 
-<img alt="ios" src="./assets/ios_set_sup.webp" width="400px" height="600px" />
+<img alt="ios" src="./assets/ios_set_sup.webp" width="800px" height="600px" />
 
 ### Adding to Android
 
@@ -64,7 +64,7 @@ In the `android/` folder of your React Native project, open the whole folder in 
 2. When prompted to select a name for the folder and resource type, select `raw` from the resource type dropdown.
 3. Drop your `.riv` file into this new folder; this ensures that the Rive file gets included in the bundle resources.
 
-<img alt="android" src="./assets/android_set_up.webp" width="400px" height="600px" />
+<img alt="android" src="./assets/android_set_up.webp" width="800px" height="600px" />
 
 Once the Rive files are added to the asset/resource bundles of the iOS and Android projects in the React Native app, the `resourceName` prop located in `src/components/animated-weather-icon.tsx` should work.
 
