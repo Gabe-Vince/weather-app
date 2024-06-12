@@ -58,7 +58,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       'expo-build-properties',
       {
         ios: {
-          deploymentTarget: '14.0',
+          deploymentTarget: '14.0', // required for Rive Runtime
         },
       },
     ],
