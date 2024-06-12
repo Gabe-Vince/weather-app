@@ -1,0 +1,27 @@
+{
+  "search": {
+    "placeHolder": "Zoek stad"
+  },
+  "forecastMain": {
+    "localTime": "Lokale tijd van de voorspelling"
+  },
+  "forecastCard": {
+    "windSpeed": "Windsnelheid",
+    "windDirection": "Windrichting",
+    "humidity": "Vochtigheid"
+  },
+  "settings": {
+    "info": "Info",
+    "general": "Algemeen",
+    "about": "Over",
+    "appName": "App Naam",
+    "version": "Versie",
+    "links": "Links",
+    "github": "Github",
+    "linkedIn": "LinkedIn",
+    "english": "Engels",
+    "dutch": "Nederlands",
+    "language": "Taal",
+    "changeLang": "Taal wijzigen"
+  }
+}

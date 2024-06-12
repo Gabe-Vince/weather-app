@@ -21,10 +21,10 @@ export const Item = ({ text, value, icon, onPress }: ItemProps) => {
     >
       <View className="flex-row items-center">
         {icon && <View className="pr-2">{icon}</View>}
-        <Text tx={text} />
+        <Text tx={text} className="text-white" />
       </View>
       <View className="flex-row items-center">
-        <Text className="text-neutral-600 dark:text-white">{value}</Text>
+        <Text className="text-gray-200">{value}</Text>
         {isPressable && (
           <View className="pl-2">
             <ArrowRight />

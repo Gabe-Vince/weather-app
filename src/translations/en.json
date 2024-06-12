@@ -1,33 +1,27 @@
 {
-  "onboarding": {
-    "message": "Welcome to obytes app site"
+  "search": {
+    "placeHolder": "Search city"
+  },
+  "forecastMain": {
+    "localTime": "Local time of forecast"
+  },
+  "forecastCard": {
+    "windSpeed": "Wind Speed",
+    "windDirection": "Wind Direction",
+    "humidity": "Humidity"
   },
   "settings": {
+    "info": "Info",
+    "general": "General",
     "about": "About",
-    "app_name": "App Name",
-    "arabic": "Arabic",
-    "english": "English",
-    "generale": "General",
-    "github": "Github",
-    "language": "Language",
-    "links": "Links",
-    "logout": "Logout",
-    "more": "More",
-    "privacy": "Privacy Policy",
-    "rate": "Rate",
-    "share": "Share",
-    "support": "Support",
-    "support_us": "Support Us",
-    "terms": "Terms of Service",
-    "theme": {
-      "dark": "Dark",
-      "light": "Light",
-      "system": "System",
-      "title": "Theme"
-    },
-    "title": "Settings",
+    "appName": "App Name",
     "version": "Version",
-    "website": "Website"
-  },
-  "welcome": "Welcome to obytes app site"
+    "links": "Links",
+    "github": "Github",
+    "linkedIn": "LinkedIn",
+    "english": "English",
+    "dutch": "Dutch",
+    "language": "Language",
+    "changeLang": "Change Language"
+  }
 }

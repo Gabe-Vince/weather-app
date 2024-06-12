@@ -12,9 +12,8 @@ i18n.use(initReactI18next).init({
   fallbackLng: 'en',
   compatibilityJSON: 'v3',
 
-  // allows integrating dynamic values into translations.
   interpolation: {
-    escapeValue: false, // escape passed in values to avoid XSS injections
+    escapeValue: false,
   },
 });
 

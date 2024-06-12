@@ -47,7 +47,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         fonts: ['./assets/fonts/Inter.ttf'],
       },
     ],
-
+    [
+      'expo-custom-assets',
+      {
+        assetsPaths: ['./assets/animations'],
+      },
+    ],
     'expo-router',
   ],
   extra: {

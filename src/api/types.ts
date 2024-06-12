@@ -1,1 +1,1 @@
-export type ApiResponse<T> = T[];
+export type ApiResponse<T> = T | T[];

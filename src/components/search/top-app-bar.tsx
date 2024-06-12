@@ -12,6 +12,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { type City, getCities } from '@/api';
+import { useSelectedLanguage } from '@/core';
 import { colors, TouchableOpacity, View } from '@/ui';
 import { WIDTH } from '@/ui/utils';
 
@@ -21,6 +22,7 @@ export const TopAppBar = () => {
   const router = useRouter();
   const [showSearch, setShowSearch] = useState<boolean>(false);
   const [locations, setLocations] = useState<City[]>([]);
+  const { language } = useSelectedLanguage();
   // Setting one shared value instead of multiple for each style value you are trying to animate increases performance and maintainability
   // then we use interpolation to get the desired effect we want for each style value
   const animatedValue = useSharedValue(0);
@@ -52,8 +54,8 @@ export const TopAppBar = () => {
 
   const handleTextDebounce = debounce(async (query: string) => {
     if (query.length > 2) {
-      const cities = await getCities(query);
-      setLocations(cities);
+      const cities = await getCities(query, language);
+      setLocations(cities as City[]);
     } else {
       setLocations([]);
     }
@@ -84,7 +86,7 @@ export const TopAppBar = () => {
             <View className="h-14 w-full items-start justify-center rounded-full bg-white/30">
               <TextInput
                 placeholder="Search City"
-                placeholderTextColor={colors.neutral[200]}
+                placeholderTextColor={'white'}
                 className="h-10 pl-6 text-base text-white"
                 style={{ width: 250 }}
                 onChangeText={handleTextDebounce}
@@ -106,7 +108,10 @@ export const TopAppBar = () => {
         </TouchableOpacity>
       </View>
       {locations!.length > 0 && showSearch ? (
-        <SearchList cities={locations} />
+        <SearchList
+          cities={locations}
+          onItemSelect={() => setShowSearch(false)}
+        />
       ) : null}
     </View>
   );

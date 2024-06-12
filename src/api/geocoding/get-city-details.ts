@@ -5,13 +5,17 @@ import { client, DEFAULT_LIMIT } from '../common';
 import type { ApiResponse } from '../types';
 import type { City } from './types';
 
-export const getCities = async (query: string): Promise<ApiResponse<City>> => {
+export const getCities = async (
+  query: string,
+  locale: string
+): Promise<ApiResponse<City>> => {
   try {
     const response = await client.get(`geo/1.0/direct`, {
       params: {
         q: query,
         limit: DEFAULT_LIMIT,
         appid: Env.OPEN_WEATHER_API_KEY,
+        lang: locale,
       },
     });
     console.log('🚀 ~ getCities ~ response:', response.data);
