@@ -23,6 +23,8 @@ cd "/path-of-repo"
 pnpm install
 ```
 
+Modify .env.example.development into .env.development and add your API Key
+
 Before diving into the code, there are a few essential steps you need to follow to ensure everything is set up correctly. The project uses native modules and assets that need to be loaded into the native assets folder. To do this, you'll need to run the following command:
 
 ```sh

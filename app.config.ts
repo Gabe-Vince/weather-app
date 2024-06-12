@@ -54,6 +54,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       },
     ],
     'expo-router',
+    [
+      'expo-build-properties',
+      {
+        ios: {
+          deploymentTarget: '14.0',
+        },
+      },
+    ],
   ],
   extra: {
     ...ClientEnv,
