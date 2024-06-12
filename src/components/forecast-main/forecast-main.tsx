@@ -84,9 +84,9 @@ export const ForecastMain = ({
         </Text>
       </Animated.View>
       {/* Temperature and dynamic animation icon */}
-      <View className="relative mb-20 mt-24 items-center justify-center">
+      <View className="relative mb-8 mt-24 items-center justify-center">
         <Animated.Text
-          className="absolute top-[-90px] z-0 ml-16 text-center text-[210px] font-bold text-white"
+          className="absolute top-[-90px] z-0 ml-12 text-center text-[180px] font-bold text-white"
           style={animatedTempStyle}
         >
           {roundedTemp}&#176;
@@ -108,7 +108,7 @@ export const ForecastMain = ({
           tx="forecastMain.localTime"
         />
       </View>
-      <Text className="text-center text-lg font-semibold capitalize text-white">
+      <Text className="my-4 text-center text-lg font-semibold capitalize text-white">
         {formatLocalDateTime(dt, timezone, language)}
       </Text>
     </>

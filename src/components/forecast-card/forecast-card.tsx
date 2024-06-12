@@ -53,7 +53,7 @@ export const ForecastCard = ({
   });
   return (
     <Animated.View
-      className="bg-darkBlue/60 my-4 flex-row justify-between rounded-3xl p-4"
+      className="bg-darkBlue/60 my-2 flex-row justify-between rounded-3xl p-4"
       style={animatedStyle}
     >
       <ForecastItem
