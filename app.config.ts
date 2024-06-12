@@ -54,6 +54,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       },
     ],
     'expo-router',
+    [
+      'expo-build-properties',
+      {
+        ios: {
+          deploymentTarget: '14.0', // required for Rive Runtime
+        },
+      },
+    ],
   ],
   extra: {
     ...ClientEnv,
@@ -62,3 +70,4 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
   },
 });
+
